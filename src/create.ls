@@ -21,7 +21,7 @@ require! {
 const BINDIR = '_modules-bindir'
 const nar-file = '.nar.json'
 const ext = 'nar'
-const ignored-files = [ '!node_modules/**' ]
+const ignored-files = [  ]
 const ignore-files = [ '.gitignore' '.npmignore' '.buildignore' '.narignore' ]
 
 const defaults =
