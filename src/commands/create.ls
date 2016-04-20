@@ -35,6 +35,7 @@ program
   .option '-g, --global-dependencies <names>', 'Include global dependencies, comma separated'
   .option '-n, --omit-dependencies', 'Create archive without embed any type of dependencies'
   .option '-i, --patterns <patterns>', 'Glob patterns to use for files include/exclude, comma separated'
+  .option '-l, --disable-ignorefiles', 'Disable the usage of ignore-like files for excluding files.'
   .option '-b, --binary', 'Include node binary in the archive'
   .option '-e, --executable', 'Create archive as self executable binary'
   .option '-l, --binary-path <path>', 'Custom node binary to embed into the archive'
@@ -71,6 +72,9 @@ create = (pkgpath, options) ->
     opts <<< dependencies: no
     opts <<< dev-dependencies: no
     opts <<< peer-dependencies: no
+
+  if options.disable-ignorefiles
+    opts << ignore-files: no
 
   if pkgpath
     unless pkgpath |> exists
